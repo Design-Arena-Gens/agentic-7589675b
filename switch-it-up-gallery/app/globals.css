@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8f5f1;
+  --foreground: #1b110d;
+  --accent: #d9b785;
+  --accent-dark: #b08752;
+  --muted: rgba(27, 17, 13, 0.64);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d0604;
+    --foreground: #f5ede3;
+    --accent: #c89a62;
+    --accent-dark: #e2c79a;
+    --muted: rgba(245, 237, 227, 0.7);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: color-mix(in srgb, var(--accent) 50%, transparent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  body {
+    background: linear-gradient(180deg, rgba(249, 245, 240, 0.8), #f6efe7),
+      radial-gradient(circle at top left, rgba(217, 183, 133, 0.32), transparent 55%),
+      radial-gradient(circle at bottom right, rgba(245, 226, 205, 0.45), transparent 50%);
+    color: var(--foreground);
+    font-family: var(--font-geist-sans), sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 55%, #fff);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .bg-luxury {
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 55%),
+      radial-gradient(circle at 80% 10%, rgba(217, 183, 133, 0.25), transparent 50%),
+      linear-gradient(135deg, rgba(27, 17, 13, 0.04), rgba(255, 255, 255, 0.6));
+  }
+
+  .card-glow {
+    box-shadow: 0 20px 45px -25px rgba(27, 17, 13, 0.35);
+  }
+}
